@@ -15,6 +15,9 @@ function App() {
   const [products, setProducts] = useState([])
   const [isloading, SetIsloading] = useState('Loading')
 
+  // nav
+  const [likes, setLikes] = useState(true);
+
   useEffect(()=>{
     const fetchData = async() =>{
       try {
@@ -33,9 +36,9 @@ function App() {
 
   return (
     <BrowserRouter className='w-full min-h-screen overflow-hidden ' >
-      <Nav />
+      <Nav  setLikes={setLikes} />
       <Routes>
-        <Route path="/" element={<Electronics products={products}/>}/>
+        <Route path="/" element={<Electronics products={products} likes={likes}/>}/>
         <Route path="Cloths" element={<Cloths/>}/>
         <Route path="Furniture" element={<Furniture/>}/>
         <Route path="Shoes" element={<Shoes/>}/>

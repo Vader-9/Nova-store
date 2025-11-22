@@ -1,14 +1,23 @@
-import { Search, Heart, ShoppingCart, TextAlignJustify, X } from "lucide-react";
+import { Search, Heart, ShoppingCart, TextAlignJustify, X, Flag } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
 
-function Nav() {
+function Nav({ likes, setLikes }) {
 
-    const [nav, setNav] = useState(false);
+    const [nav, setNav] = useState(true);
+    
 
     function toggleNav() {
         setNav(!nav)
+    }
+
+    function handleLikes() {
+        if(likes === true){
+            setLikes(false)
+        } else {
+            setLikes(true)
+        }
     }
 
 
@@ -27,7 +36,7 @@ function Nav() {
                 </div>
                 <div className="flex justify-center gap-[10px]">
                     <Search />
-                    <Heart />
+                    <Heart onClick={handleLikes} />
                     <ShoppingCart />
                 </div>
             </div>
@@ -45,7 +54,7 @@ function Nav() {
                 </div>
                 <div className="w-full flex justify-center gap-5 p-2 mt-5 ">
                     <Search />
-                    <Heart />
+                    <Heart onClick={handleLikes} />
                     <ShoppingCart />
                     <X  onClick={toggleNav}/>
                 </div>
