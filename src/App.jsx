@@ -29,7 +29,7 @@ function App() {
     fetchData()
   },[])
 
- console.log(products[1]?.category?.name)
+ //console.log(products[1]?.category?.name)
 
   return (
     <BrowserRouter className='w-full min-h-screen overflow-hidden ' >
