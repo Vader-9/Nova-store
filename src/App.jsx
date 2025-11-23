@@ -36,7 +36,7 @@ function App() {
 
   return (
     <BrowserRouter className='w-full min-h-screen overflow-hidden ' >
-      <Nav  setLikes={setLikes} />
+      <Nav  likes={likes}  setLikes={setLikes} />
       <Routes>
         <Route path="/" element={<Electronics products={products} likes={likes}/>}/>
         <Route path="Cloths" element={<Cloths/>}/>
