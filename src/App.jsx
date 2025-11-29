@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route} from "react-router-dom";
 import axios from "axios";
 //import { Camera, Heart, Home } from "lucide-react";
+import Nova from "./Componets/Nova";
 import Nav from "./Nav";
 import Electronics from "./Componets/Electronics";
 import Cloths from "./Componets/Cloths";
@@ -8,6 +9,8 @@ import Furniture from "./Componets/Furniture";
 import Shoes from "./Componets/Shoes";
 import Miscellaneous from "./Componets/Miscellaneous";
 import { useEffect, useState } from "react";
+
+//import { ConstructionIcon } from "lucide-react";
 
 
 function App() {
@@ -31,14 +34,15 @@ function App() {
     }
     fetchData()
   },[])
-
+ // console.log(products)
  //console.log(products[1]?.category?.name)
 
   return (
-    <BrowserRouter className='w-full min-h-screen overflow-hidden ' >
+    <BrowserRouter className='w-full min-h-screen overflow-hidden  md:min-h-screen ' >
       <Nav  likes={likes}  setLikes={setLikes} />
       <Routes>
-        <Route path="/" element={<Electronics products={products} likes={likes}/>}/>
+        <Route path="/" element={<Nova products={products} likes={likes}/>}/>
+        <Route path="Electronics" element={<Electronics products={products} likes={likes}/>}/>
         <Route path="Cloths" element={<Cloths/>}/>
         <Route path="Furniture" element={<Furniture/>}/>
         <Route path="Shoes" element={<Shoes/>}/>

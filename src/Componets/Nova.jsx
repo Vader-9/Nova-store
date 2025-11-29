@@ -1,13 +1,35 @@
-import { Heart, X, Settings } from "lucide-react"; // using Settings as a gear
+import { Heart, X, Settings, WifiOff } from "lucide-react"; 
 import Footer from "../Footer";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-function Electronics({ products, likes }) {
+
+function Nova({ products, likes, searchTerm }) {
   const [showChart, setShowChart] = useState(null);
   const [favourites, setFavourites] = useState([]);
+  const [error, setError] = useState(false); 
 
-  // Option 1: Safely handle empty or loading products
-  if (!products || products.length === 0) {
+  // Re-check internet connection
+  useEffect(() => {
+    if (!navigator.onLine) {
+      setError(true);
+    }
+  }, []);
+  console.log(searchTerm);
+  // error state
+  if (error || !products) {
+    return (
+      <div className="flex flex-col justify-center items-center h-screen gap-4">
+        <WifiOff className="text-red-500" size={60} />
+        <h1 className="text-2xl font-semibold text-red-600">
+          No Internet Connection
+        </h1>
+        <p className="text-gray-600">Please check your network and try again.</p>
+      </div>
+    );
+  }
+
+  // Loading State
+  if (products.length === 0) {
     return (
       <div className="flex flex-col justify-center items-center h-screen gap-4">
         <Settings className="animate-spin text-4xl text-green-500" />
@@ -16,10 +38,7 @@ function Electronics({ products, likes }) {
     );
   }
 
-  const electro = products.filter(
-    (product) => product?.category?.name === "Electronics"
-  );
-  console.log(electro[7]);
+  const electro = products;
 
   const toggleChart = (id) => {
     setShowChart((prev) => (prev === id ? null : id));
@@ -55,63 +74,57 @@ function Electronics({ products, likes }) {
       {likes ? (
         <div>
           <div className="w-full h-[80px] p-4 my-4 flex justify-center items-center gap-2">
-            <h1>{electro[0]?.category?.name}</h1>
+            <h1>Nova products</h1>
             <p>({electro.length})</p>
           </div>
 
           <div className="flex justify-center w-full">
             <div className="grid gap-2 grid-cols-1 mb-10 w-full p-5 sm:grid-cols-2 md:grid-cols-4">
-              {electro.length === 0 ? (
-                <div className="col-span-full text-center text-gray-500 text-lg mt-10">
-                  😔 No items available
-                </div>
-              ) : (
-                electro.map((item) => (
-                  <div
-                    key={item.id}
-                    className="text-center p-2 md:p-1 md:m-1 transition-all duration-300 hover:scale-105 hover:border-2 hover:border-gray-700 rounded-3xl"
-                  >
-                    <div className="relative w-full h-[300px] sm:h-[250px] md:h-[350px] lg:h-[300px] xl:h-[350px]">
+              {electro.map((item) => (
+                <div
+                  key={item.id}
+                  className="text-center p-2 md:p-1 md:m-1 transition-all duration-300 hover:scale-105 hover:border-2 hover:border-gray-700 rounded-3xl"
+                >
+                  <div className="relative w-full h-[300px] sm:h-[250px] md:h-[350px] lg:h-[300px] xl:h-[350px]">
 
-                      {/* NEW ARRIVAL BADGE */}
-                      {item?.slug?.toLowerCase().includes("new") && (
-                        <div className="absolute top-3 left-3 bg-green-600 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md z-20">
-                          NEW ARRIVAL
-                        </div>
-                      )}
+                    {/* NEW ARRIVAL BADGE */}
+                    {item?.slug?.toLowerCase().includes("new") && (
+                      <div className="absolute top-3 left-3 bg-green-600 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md z-20">
+                        NEW ARRIVAL
+                      </div>
+                    )}
 
-                      <img
-                        src={item.images?.[0] || ""}
-                        alt={item.title || "Image"}
-                        className="w-full h-full rounded-3xl object-cover cursor-pointer"
-                        onClick={() => toggleChart(item.id)}
+                    <img
+                      src={item.images?.[0] || ""}
+                      alt={item.title || "Image"}
+                      className="w-full h-full rounded-3xl object-cover cursor-pointer"
+                      onClick={() => toggleChart(item.id)}
+                    />
+
+                    <div className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-md z-20">
+                      <Heart
+                        className={`cursor-pointer ${
+                          favourites.some((f) => f.id === item.id)
+                            ? "fill-green-500 text-green-500"
+                            : "fill-none text-green-500"
+                        }`}
+                        onClick={() => addToFavourites(item.id)}
                       />
+                    </div>
 
-                      <div className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-md z-20">
-                        <Heart
-                          className={`cursor-pointer ${
-                            favourites.some((f) => f.id === item.id)
-                              ? "fill-green-500 text-green-500"
-                              : "fill-none text-green-500"
-                          }`}
-                          onClick={() => addToFavourites(item.id)}
-                        />
-                      </div>
+                    <div className="absolute bottom-3 left-3 right-3 bg-white bg-opacity-90 p-3 rounded-xl shadow-md z-20">
+                      <h1 className="text-sm font-semibold">{item.title}</h1>
+                      <p className="text-sm">${item.price}</p>
 
-                      <div className="absolute bottom-3 left-3 right-3 bg-white bg-opacity-90 p-3 rounded-xl shadow-md z-20">
-                        <h1 className="text-sm font-semibold">{item.title}</h1>
-                        <p className="text-sm">${item.price}</p>
-
-                        {showChart === item.id && (
-                          <button className="bg-green-500 text-white w-full mt-2 p-2 rounded-xl">
-                            Add to cart
-                          </button>
-                        )}
-                      </div>
+                      {showChart === item.id && (
+                        <button className="bg-green-500 text-white w-full mt-2 p-2 rounded-xl">
+                          Add to cart
+                        </button>
+                      )}
                     </div>
                   </div>
-                ))
-              )}
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -167,9 +180,9 @@ function Electronics({ products, likes }) {
         </div>
       )}
 
-      <Footer />
+      {likes ? <Footer /> : null}
     </div>
   );
 }
 
-export default Electronics;
+export default Nova;
