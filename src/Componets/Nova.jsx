@@ -3,9 +3,8 @@ import Footer from "../Footer";
 import { useState, useEffect } from "react";
 
 
-function Nova({ products, likes, searchTerm }) {
+function Nova({ products, likes, searchTerm, favourites, setFavourites }) {
   const [showChart, setShowChart] = useState(null);
-  const [favourites, setFavourites] = useState([]);
   const [error, setError] = useState(false); 
 
   // Re-check internet connection

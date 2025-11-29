@@ -18,6 +18,11 @@ function App() {
   const [products, setProducts] = useState([])
   const [isloading, SetIsloading] = useState('Loading')
 
+  // for add to favourites items
+  const [favourites, setFavourites] = useState([]);
+
+
+
   // nav
   const [likes, setLikes] = useState(true);
 
@@ -41,8 +46,8 @@ function App() {
     <BrowserRouter className='w-full min-h-screen overflow-hidden  md:min-h-screen ' >
       <Nav  likes={likes}  setLikes={setLikes} />
       <Routes>
-        <Route path="/" element={<Nova products={products} likes={likes}/>}/>
-        <Route path="Electronics" element={<Electronics products={products} likes={likes}/>}/>
+        <Route path="/" element={<Nova products={products} likes={likes} favourites={favourites} setFavourites={setFavourites}/>}/>
+        <Route path="Electronics" element={<Electronics products={products} likes={likes} favourites={favourites} setFavourites={setFavourites} />}/>
         <Route path="Cloths" element={<Cloths/>}/>
         <Route path="Furniture" element={<Furniture/>}/>
         <Route path="Shoes" element={<Shoes/>}/>

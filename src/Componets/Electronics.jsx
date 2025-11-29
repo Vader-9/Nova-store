@@ -2,9 +2,9 @@ import { Heart, X, Settings } from "lucide-react"; // using Settings as a gear
 import Footer from "../Footer";
 import { useState } from "react";
 
-function Electronics({ products, likes }) {
+function Electronics({ products, likes, favourites, setFavourites }) {
   const [showChart, setShowChart] = useState(null);
-  const [favourites, setFavourites] = useState([]);
+  
 
   // Option 1: Safely handle empty or loading products
   if (!products || products.length === 0) {
