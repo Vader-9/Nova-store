@@ -48,8 +48,11 @@ function App() {
   // console.log(products)
   //console.log(products[1]?.category?.name)
 
+  //w-full min-h-screen overflow-hidden md:min-h-screen
+
+
   return (
-    <BrowserRouter className='w-full min-h-screen overflow-hidden  md:min-h-screen ' >
+    <BrowserRouter className='w-full min-h-screen flex flex-col ' >
       <Nav likes={likes} setLikes={setLikes} setSearchItem={setSearchItem} />
       <Routes>
         <Route path="/" element={<Nova products={products} likes={likes} favourites={favourites} setFavourites={setFavourites} searchItem={searchItem} setSearchItem={setSearchItem} cartItems={cartItems} setCartItems={setCartItems} />} />

@@ -88,7 +88,7 @@ function Nova({ products, likes, favourites, setFavourites, searchItem, setSearc
   return (
     <div className="w-full h-screen text-center mt-8 mb-10 md:h-screen md:mt-2 md:mb-10 md:relative">
       {searchItem ? <div className="w-full h-20 bg-gray-500 mt-4 p-4 justify-center gap-6 text-center rounded flex">
-        <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} className="w-120 p-3 border outline-none rounded-3xl" />
+        <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} className="w-120 p-3  outline-none rounded-3xl text-white" />
         <div className="mt-3">
           <X onClick={() => setSearchItem(false)} className="cursor-pointer" />
         </div>
