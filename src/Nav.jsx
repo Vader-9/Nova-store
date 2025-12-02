@@ -55,34 +55,44 @@ function Nav({ likes, setLikes, setSearchItem }) {
             </div>
 
             {/* MOBILE NAV */}
-            <div
-                className={`w-1/2 h-screen border-b-2 border-green-500 p-4 bg-white z-50 shadow absolute top-0 left-0 transition-all duration-700 md:hidden
-                ${nav ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0"}`}
-            >
-                <div className="w-full flex flex-col gap-5 p-6">
-                    <h1 className="font-bold text-2xl text-green-500">
-                        <Link to="/">Nova</Link>
-                    </h1>
+           {nav && (
+  <div className="fixed inset-0 z-40">
+    {/* Overlay */}
+    <div 
+      className="absolute inset-0 bg-black opacity-50" 
+      onClick={toggleNav}
+    />
 
-                    <Link to="/Electronics"  >Electronics</Link>
-                    <Link to="/Cloths">Cloths</Link>
-                    <Link to="/Furniture">Furniture</Link>
-                    <Link to="/Shoes">Shoes</Link>
-                    <Link to="/Miscellaneous">Miscellaneous</Link>
-                </div>
+    {/* Sidebar */}
+    <div
+      className={`w-3/4 max-w-xs h-screen border-b-2 border-green-500 p-4 bg-white z-50 shadow absolute top-0 left-0 transition-all duration-700
+                  ${nav ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0"}`}
+    >
+      <div className="w-full flex flex-col gap-5 p-6">
+        <h1 className="font-bold text-2xl text-green-500">
+          <Link to="/">Nova</Link>
+        </h1>
 
-                <div className="w-full flex justify-center gap-6 mt-5">
-                    <Search  onClick={()=>setSearchItem(true)}/>
-                    <Heart
-                        onClick={handleLikes}
-                        className={`cursor-pointer ${likes ? "text-green-500 fill-green-500" : "text-black"}`}
-                    />
+        <Link to="/Electronics">Electronics</Link>
+        <Link to="/Cloths">Cloths</Link>
+        <Link to="/Furniture">Furniture</Link>
+        <Link to="/Shoes">Shoes</Link>
+        <Link to="/Miscellaneous">Miscellaneous</Link>
+      </div>
 
+      <div className="w-full flex justify-center gap-6 mt-5">
+        <Search onClick={() => setSearchItem(true)} />
+        <Heart
+          onClick={handleLikes}
+          className={`cursor-pointer ${likes ? "text-green-500 fill-green-500" : "text-black"}`}
+        />
+        <ShoppingCart />
+        <X onClick={toggleNav} className="cursor-pointer" />
+      </div>
+    </div>
+  </div>
+)}
 
-                    <ShoppingCart />
-                    <X onClick={toggleNav} className="cursor-pointer" />
-                </div>
-            </div>
         </>
     );
 }
