@@ -2,13 +2,12 @@ import { Search, Heart, ShoppingCart, TextAlignJustify, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-function Nav({ likes, setLikes }) {
+function Nav({ likes, setLikes, setSearchItem }) {
 
     const [nav, setNav] = useState(false);
-    // for the search logic
-    const [searchTerm, setSearchTerm] = useState('omo men o');
     
-    console.log(searchTerm)
+    
+
     function toggleNav() {
         setNav(!nav);
     }
@@ -23,11 +22,11 @@ function Nav({ likes, setLikes }) {
             <div className="w-full hidden md:flex md:justify-between md:p-4 md:border-b-2 md:border-gray-200 shadow">
                 <div className="flex items-center gap-3">
                     <h1 className="font-bold text-2xl text-green-500">
-                        <Link to="/" state={{ searchTerm: searchTerm }}>Nova</Link>
+                        <Link to="/" >Nova</Link>
 
                     </h1>
 
-                    <Link to="/Electronics" state={{ searchTerm }} >Electronics</Link>
+                    <Link to="/Electronics"  >Electronics</Link>
                     <Link to="/Cloths">Cloths</Link>
                     <Link to="/Furniture">Furniture</Link>
                     <Link to="/Shoes">Shoes</Link>
@@ -35,10 +34,10 @@ function Nav({ likes, setLikes }) {
                 </div>
 
                 <div className="flex gap-4 items-center">
-                    <Search onClick={()=>setSearchTerm('show')} />
+                    <Search onClick={()=>setSearchItem(true)} />
                     <Heart
                         onClick={handleLikes}
-                        className={`cursor-pointer ${!likes ? "text-green-500 fill-green-500" : "text-black"}`}
+                        className={`cursor-pointer ${likes ? "text-green-500 fill-green-500" : "text-black"}`}
                     />
 
 
@@ -65,7 +64,7 @@ function Nav({ likes, setLikes }) {
                         <Link to="/">Nova</Link>
                     </h1>
 
-                    <Link to="/Electronics" state={{ searchTerm }} >Electronics</Link>
+                    <Link to="/Electronics"  >Electronics</Link>
                     <Link to="/Cloths">Cloths</Link>
                     <Link to="/Furniture">Furniture</Link>
                     <Link to="/Shoes">Shoes</Link>
@@ -73,10 +72,10 @@ function Nav({ likes, setLikes }) {
                 </div>
 
                 <div className="w-full flex justify-center gap-6 mt-5">
-                    <Search  onClick={()=>setSearchTerm('show')}/>
+                    <Search  onClick={()=>setSearchItem(true)}/>
                     <Heart
                         onClick={handleLikes}
-                        className={`cursor-pointer ${!likes ? "text-green-500 fill-green-500" : "text-black"}`}
+                        className={`cursor-pointer ${likes ? "text-green-500 fill-green-500" : "text-black"}`}
                     />
 
 

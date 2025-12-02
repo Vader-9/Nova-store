@@ -1,11 +1,14 @@
-import { Heart, X, Settings, WifiOff } from "lucide-react"; 
+import { Heart, X, Settings, WifiOff, } from "lucide-react";
 import Footer from "../Footer";
 import { useState, useEffect } from "react";
 
 
-function Nova({ products, likes, searchTerm, favourites, setFavourites }) {
+function Nova({ products, likes, favourites, setFavourites, searchItem, setSearchItem }) {
   const [showChart, setShowChart] = useState(null);
-  const [error, setError] = useState(false); 
+  const [error, setError] = useState(false);
+
+  // search
+  const [search, setSearch] = useState('')
 
   // Re-check internet connection
   useEffect(() => {
@@ -13,7 +16,7 @@ function Nova({ products, likes, searchTerm, favourites, setFavourites }) {
       setError(true);
     }
   }, []);
-  console.log(searchTerm);
+  console.log(searchItem);
   // error state
   if (error || !products) {
     return (
@@ -37,11 +40,18 @@ function Nova({ products, likes, searchTerm, favourites, setFavourites }) {
     );
   }
 
-  const electro = products;
 
-  const toggleChart = (id) => {
-    setShowChart((prev) => (prev === id ? null : id));
-  };
+
+  // this is were the search will be place
+
+  const fitteredSearchItems = products.filter((item) => item.title.toLowerCase().includes(search.toLocaleLowerCase()))
+
+  console.log(fitteredSearchItems);
+
+  const electro = searchItem ? fitteredSearchItems : products;
+  /* const toggleChart = (id) => {
+     setShowChart((prev) => (prev === id ? null : id));
+   }; */
 
   const addToFavourites = (id) => {
     const item = electro.find((product) => product.id === id);
@@ -68,10 +78,25 @@ function Nova({ products, likes, searchTerm, favourites, setFavourites }) {
     setFavourites((prev) => prev.filter((item) => item.id !== id));
   };
 
+
+
+
+
+
   return (
     <div className="w-full h-screen text-center mt-8 mb-10 md:h-screen md:mt-2 md:mb-10 md:relative">
-      {likes ? (
+      {searchItem ? <div className="w-full h-20 bg-gray-500 mt-4 p-4 justify-center gap-6 text-center rounded flex">
+        <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} className="w-120 p-3 border outline-none rounded-3xl" />
+        <div className="mt-3">
+          <X onClick={() => setSearchItem(false)} className="cursor-pointer" />
+        </div>
+
+
+      </div> : null}
+      {!likes ? (
+
         <div>
+
           <div className="w-full h-[80px] p-4 my-4 flex justify-center items-center gap-2">
             <h1>Nova products</h1>
             <p>({electro.length})</p>
@@ -102,11 +127,10 @@ function Nova({ products, likes, searchTerm, favourites, setFavourites }) {
 
                     <div className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-md z-20">
                       <Heart
-                        className={`cursor-pointer ${
-                          favourites.some((f) => f.id === item.id)
-                            ? "fill-green-500 text-green-500"
-                            : "fill-none text-green-500"
-                        }`}
+                        className={`cursor-pointer ${favourites.some((f) => f.id === item.id)
+                          ? "fill-green-500 text-green-500"
+                          : "fill-none text-green-500"
+                          }`}
                         onClick={() => addToFavourites(item.id)}
                       />
                     </div>
@@ -179,7 +203,7 @@ function Nova({ products, likes, searchTerm, favourites, setFavourites }) {
         </div>
       )}
 
-      {likes ? <Footer /> : null}
+      {!likes ? <Footer /> : null}
     </div>
   );
 }
