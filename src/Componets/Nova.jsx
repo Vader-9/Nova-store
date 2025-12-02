@@ -49,9 +49,11 @@ function Nova({ products, likes, favourites, setFavourites, searchItem, setSearc
   console.log(fitteredSearchItems);
 
   const electro = searchItem ? fitteredSearchItems : products;
-  /* const toggleChart = (id) => {
+
+  // for the chart toggle
+   const toggleChart = (id) => {
      setShowChart((prev) => (prev === id ? null : id));
-   }; */
+   }; 
 
   const addToFavourites = (id) => {
     const item = electro.find((product) => product.id === id);
