@@ -17,7 +17,7 @@ function Electronics({ products, likes, favourites, setFavourites }) {
   }
 
   const electro = products.filter(
-    (product) => product?.category?.name === "Electronics"
+    (product) => product?.category?.name === "Cloths" || product?.category?.name === "Shoes"
   );
   console.log(electro[7]);
 

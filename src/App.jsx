@@ -8,6 +8,7 @@ import Cloths from "./Componets/Cloths";
 import Furniture from "./Componets/Furniture";
 import Shoes from "./Componets/Shoes";
 import Miscellaneous from "./Componets/Miscellaneous";
+//import Footer from "./Footer";
 import { useEffect, useState } from "react";
 
 //import { ConstructionIcon } from "lucide-react";
@@ -16,6 +17,9 @@ import { useEffect, useState } from "react";
 function App() {
 
   const [products, setProducts] = useState([])
+
+  // for the nav
+  const [nav, setNav] = useState(false);
   
 
   // for add to favourites items
@@ -53,7 +57,7 @@ function App() {
 
   return (
     <BrowserRouter className='w-full min-h-screen flex flex-col ' >
-      <Nav likes={likes} setLikes={setLikes} setSearchItem={setSearchItem} />
+      <Nav nav={nav} setNav={setNav} likes={likes} setLikes={setLikes} setSearchItem={setSearchItem} />
       <Routes>
         <Route path="/" element={<Nova products={products} likes={likes} favourites={favourites} setFavourites={setFavourites} searchItem={searchItem} setSearchItem={setSearchItem} cartItems={cartItems} setCartItems={setCartItems} />} />
         <Route path="Electronics" element={<Electronics products={products} likes={likes} favourites={favourites} setFavourites={setFavourites} />} />
@@ -62,7 +66,7 @@ function App() {
         <Route path="Shoes" element={<Shoes />} />
         <Route path="Miscellaneous" element={<Miscellaneous />} />
       </Routes>
-
+       
     </BrowserRouter>
   )
 }

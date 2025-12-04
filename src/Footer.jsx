@@ -3,7 +3,7 @@
 function Footer() {
 
     return (
-        <div className="w-full h-[700px] bg-blue-950 text-white pt-[10px] px-5 text-center flex flex-col mt-15   md:flex-row md:justify-between md:text-center md:h-[300px] md:w-full md:px-10 md:pt-[100px] md:mt-15  gap-5">
+        <div className="w-full h-[700px] bg-blue-950 text-white pt-[10px] px-5 text-center flex flex-col mt-100   md:flex-row md:justify-between md:text-center md:h-[400px] md:w-full md:px-10 md:pt-[100px] md:mt-40  gap-5">
             <div className="text-left w-[300px] md:w-[500px]">
                 <h1 className="font-bold text-2xl text-white">Nova</h1>
                 <p>Online brand clothing and electronics founded in 2025 in Nigeria. Heavenly focuses on selling only quality and branded items, limited edition collections by best fashion design</p>

@@ -1,4 +1,4 @@
-import { Heart, X, Settings, WifiOff, } from "lucide-react";
+import { Heart, X, Settings, WifiOff,Search } from "lucide-react";
 import Footer from "../Footer";
 import { useState, useEffect } from "react";
 
@@ -21,7 +21,7 @@ function Nova({ products, likes, favourites, setFavourites, searchItem, setSearc
   if (error || !products) {
     return (
       <div className="flex flex-col justify-center items-center h-screen gap-4">
-        <WifiOff className="text-red-500" size={60} />
+        <WifiOff className="text-red-500" size={100} />
         <h1 className="text-2xl font-semibold text-red-600">
           No Internet Connection
         </h1>
@@ -34,7 +34,7 @@ function Nova({ products, likes, favourites, setFavourites, searchItem, setSearc
   if (products.length === 0) {
     return (
       <div className="flex flex-col justify-center items-center h-screen gap-4">
-        <Settings className="animate-spin text-4xl text-green-500" />
+        <Settings className="animate-spin text-4xl text-green-500" size={100} />
         <p className="text-lg font-semibold">Loading products...</p>
       </div>
     );
@@ -46,7 +46,7 @@ function Nova({ products, likes, favourites, setFavourites, searchItem, setSearc
 
   const fitteredSearchItems = products.filter((item) => item.title.toLowerCase().includes(search.toLocaleLowerCase()))
 
-  console.log(fitteredSearchItems);
+  
 
   const electro = searchItem ? fitteredSearchItems : products;
 
@@ -87,8 +87,9 @@ function Nova({ products, likes, favourites, setFavourites, searchItem, setSearc
 
   return (
     <div className="w-full h-screen text-center mt-8 mb-10 md:h-screen md:mt-2 md:mb-10 md:relative">
-      {searchItem ? <div className="w-full h-20 bg-gray-500 mt-4 p-4 justify-center gap-6 text-center rounded flex">
-        <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} className="w-120 p-3  outline-none rounded-3xl text-white" />
+      {searchItem ? <div className="w-full h-20 bg-gray-500 mt-4 p-4 justify-center gap-6 text-center  rounded flex">
+        <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder='🔍' className="w-120 p-3 border  outline-none rounded-3xl text-white" />
+        
         <div className="mt-3">
           <X onClick={() => setSearchItem(false)} className="cursor-pointer" />
         </div>
@@ -105,11 +106,11 @@ function Nova({ products, likes, favourites, setFavourites, searchItem, setSearc
           </div>
 
           <div className="flex justify-center w-full">
-            <div className="grid gap-2 grid-cols-1 mb-10 w-full p-5 sm:grid-cols-2 md:grid-cols-4">
+            <div className="grid gap-1 grid-cols-2 mb-10 w-full p-5 sm:grid-cols-2 md:grid-cols-4">
               {electro.map((item) => (
                 <div
                   key={item.id}
-                  className="text-center p-2 md:p-1 md:m-1 transition-all duration-300 hover:scale-105 hover:border-2 hover:border-gray-700 rounded-3xl"
+                  className=" md:p-1 md:m-1 text-center p-2  transition-all duration-300 hover:scale-105 hover:border-2 hover:border-gray-700 rounded-3xl"
                 >
                   <div className="relative w-full h-[300px] sm:h-[250px] md:h-[350px] lg:h-[300px] xl:h-[350px]">
 
