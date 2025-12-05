@@ -8,6 +8,7 @@ import Cloths from "./Componets/Cloths";
 import Furniture from "./Componets/Furniture";
 import Shoes from "./Componets/Shoes";
 import Miscellaneous from "./Componets/Miscellaneous";
+import Cart from "./Pages/Cart";
 //import Footer from "./Footer";
 import { useEffect, useState } from "react";
 
@@ -65,6 +66,7 @@ function App() {
         <Route path="Furniture" element={<Furniture />} />
         <Route path="Shoes" element={<Shoes />} />
         <Route path="Miscellaneous" element={<Miscellaneous />} />
+        <Route path="/Cart/:id" element={<Cart />} />
       </Routes>
        
     </BrowserRouter>

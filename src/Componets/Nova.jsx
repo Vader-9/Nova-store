@@ -1,11 +1,20 @@
-import { Heart, X, Settings, WifiOff,Search } from "lucide-react";
+import { Heart, X, Settings, WifiOff } from "lucide-react";
 import Footer from "../Footer";
+import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 
 function Nova({ products, likes, favourites, setFavourites, searchItem, setSearchItem }) {
   const [showChart, setShowChart] = useState(null);
   const [error, setError] = useState(false);
+
+  // to go to chart
+   const navigate = useNavigate();
+   
+
+  const goToCart = () => {
+    navigate("/Cart/5");
+  }
 
   // search
   const [search, setSearch] = useState('')
@@ -106,11 +115,11 @@ function Nova({ products, likes, favourites, setFavourites, searchItem, setSearc
           </div>
 
           <div className="flex justify-center w-full">
-            <div className="grid gap-1 grid-cols-2 mb-10 w-full p-5 sm:grid-cols-2 md:grid-cols-4">
+            <div className="grid gap-1 grid-cols-2 mb-10 w-full p-5 sm:grid-cols-2 md:gap-2 md:grid-cols-4">
               {electro.map((item) => (
                 <div
                   key={item.id}
-                  className=" md:p-1 md:m-1 text-center p-2  transition-all duration-300 hover:scale-105 hover:border-2 hover:border-gray-700 rounded-3xl"
+                  className=" md:p-1 md:m-1 text-center p-2  transition-all duration-300 hover:scale-105  rounded-3xl"
                 >
                   <div className="relative w-full h-[300px] sm:h-[250px] md:h-[350px] lg:h-[300px] xl:h-[350px]">
 
@@ -143,7 +152,7 @@ function Nova({ products, likes, favourites, setFavourites, searchItem, setSearc
                       <p className="text-sm">${item.price}</p>
 
                       {showChart === item.id && (
-                        <button className="bg-green-500 text-white w-full mt-2 p-2 rounded-xl">
+                        <button className="bg-green-500 text-white w-full mt-2 p-2 rounded-xl" onClick={goToCart}>
                           Add to cart
                         </button>
                       )}
@@ -165,7 +174,7 @@ function Nova({ products, likes, favourites, setFavourites, searchItem, setSearc
                   favourites.map((favourite) => (
                     <div
                       key={favourite.id}
-                      className="text-center p-2 md:p-1 md:m-1 transition-all duration-300 hover:scale-105 hover:border-2 hover:border-gray-700 rounded-3xl"
+                      className="text-center p-2 md:p-1 md:m-1 transition-all duration-300 hover:scale-105  rounded-3xl"
                     >
                       <div className="relative w-full h-[300px] sm:h-[250px] md:h-[350px] lg:h-[300px] xl:h-[350px]">
                         <img
