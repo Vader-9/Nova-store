@@ -4,17 +4,32 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 
-function Nova({ products, likes, favourites, setFavourites, searchItem, setSearchItem }) {
+function Nova({ products, likes, favourites, setFavourites, searchItem, setSearchItem, setCartItems }) {
   const [showChart, setShowChart] = useState(null);
   const [error, setError] = useState(false);
 
-  // to go to chart
-   const navigate = useNavigate();
-   
+   // to go to chart
+  const navigate = useNavigate();
 
   const goToCart = () => {
-    navigate("/Cart/5");
+    navigate("/description/5");
+
   }
+ 
+   
+// add to cart
+  function addToCart(item){
+  
+      setCartItems((prev)=>[...prev, {
+        id: item.id,
+        title: item.title,
+        price: item.price,
+        images: item.images,
+      }])
+  }
+  
+  // add to description
+
 
   // search
   const [search, setSearch] = useState('')
@@ -25,7 +40,7 @@ function Nova({ products, likes, favourites, setFavourites, searchItem, setSearc
       setError(true);
     }
   }, []);
-  console.log(searchItem);
+  console.log(products);
   // error state
   if (error || !products) {
     return (
@@ -115,7 +130,7 @@ function Nova({ products, likes, favourites, setFavourites, searchItem, setSearc
           </div>
 
           <div className="flex justify-center w-full">
-            <div className="grid gap-1 grid-cols-2 mb-10 w-full p-5 sm:grid-cols-2 md:gap-2 md:grid-cols-4">
+            <div className="grid gap-2 grid-cols-1 mb-10 w-full p-5 sm:grid-cols-2 md:gap-2 md:grid-cols-4">
               {electro.map((item) => (
                 <div
                   key={item.id}
@@ -134,7 +149,8 @@ function Nova({ products, likes, favourites, setFavourites, searchItem, setSearc
                       src={item.images?.[0] || ""}
                       alt={item.title || "Image"}
                       className="w-full h-full rounded-3xl object-cover cursor-pointer"
-                      onClick={() => toggleChart(item.id)}
+                     onMouseEnter={() => toggleChart(item.id)}
+                      onClick={goToCart}
                     />
 
                     <div className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-md z-20">
@@ -152,7 +168,7 @@ function Nova({ products, likes, favourites, setFavourites, searchItem, setSearc
                       <p className="text-sm">${item.price}</p>
 
                       {showChart === item.id && (
-                        <button className="bg-green-500 text-white w-full mt-2 p-2 rounded-xl" onClick={goToCart}>
+                        <button className="bg-green-500 text-white w-full mt-2 p-2 rounded-xl" onClick={()=>addToCart(item)}>
                           Add to cart
                         </button>
                       )}
