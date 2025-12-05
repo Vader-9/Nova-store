@@ -5,7 +5,7 @@ import { useState } from "react";
 
 function Nav({ nav, setNav, likes, setLikes, setSearchItem, cartItems }) {
 
- 
+
 
 
 
@@ -45,14 +45,16 @@ function Nav({ nav, setNav, likes, setLikes, setSearchItem, cartItems }) {
             onClick={handleLikes}
             className={`cursor-pointer ${likes ? "text-green-500 fill-green-500" : "text-black"}`}
           />
-          <div className="relative" >
-            <ShoppingCart />
+          <Link to='Cart'>
+            <div className="relative" >
+              <ShoppingCart />
 
-            <p className={`absolute -top-2 -right-2 bg-gray-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full ${cartItems.length === 0 ? "hidden" : "block"
-              }`}>
-              {cartItems.length}
-            </p>
-          </div>
+              <p className={`absolute -top-2 -right-2 bg-gray-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full ${cartItems.length === 0 ? "hidden" : "block"
+                }`}>
+                {cartItems.length}
+              </p>
+            </div>
+          </Link>
 
         </div>
       </div>
