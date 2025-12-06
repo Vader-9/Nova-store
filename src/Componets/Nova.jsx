@@ -4,16 +4,18 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 
-function Nova({ products, likes, favourites, setFavourites, searchItem, setSearchItem, setCartItems }) {
-  const [showChart, setShowChart] = useState(null);
+function Nova({ products, likes, favourites, setFavourites, searchItem, setSearchItem, setCartItems, setDescriptionItem }) {
+  const [showCart, setShowCart] = useState(null);
   const [error, setError] = useState(false);
 
    // to go to chart
   const navigate = useNavigate();
 
-  const goToCart = () => {
+  // add to description
+  const goToDescription = (id) => {
+    const item = electro.find((p) => p.id === id)
+    setDescriptionItem(item)
     navigate("/description/5");
-
   }
  
    
@@ -28,7 +30,7 @@ function Nova({ products, likes, favourites, setFavourites, searchItem, setSearc
       }])
   }
   
-  // add to description
+  
 
 
   // search
@@ -75,8 +77,8 @@ function Nova({ products, likes, favourites, setFavourites, searchItem, setSearc
   const electro = searchItem ? fitteredSearchItems : products;
 
   // for the chart toggle
-   const toggleChart = (id) => {
-     setShowChart((prev) => (prev === id ? null : id));
+   const toggleCart = (id) => {
+     setShowCart((prev) => (prev === id ? null : id));
    }; 
 
   const addToFavourites = (id) => {
@@ -149,8 +151,8 @@ function Nova({ products, likes, favourites, setFavourites, searchItem, setSearc
                       src={item.images?.[0] || ""}
                       alt={item.title || "Image"}
                       className="w-full h-full rounded-3xl object-cover cursor-pointer"
-                     onMouseEnter={() => toggleChart(item.id)}
-                      onClick={goToCart}
+                      onMouseEnter={() => toggleCart(item.id)}
+                      onClick={()=>goToDescription(item.id)}
                     />
 
                     <div className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-md z-20">
@@ -167,7 +169,7 @@ function Nova({ products, likes, favourites, setFavourites, searchItem, setSearc
                       <h1 className="text-sm font-semibold">{item.title}</h1>
                       <p className="text-sm">${item.price}</p>
 
-                      {showChart === item.id && (
+                      {showCart === item.id && (
                         <button className="bg-green-500 text-white w-full mt-2 p-2 rounded-xl" onClick={()=>addToCart(item)}>
                           Add to cart
                         </button>

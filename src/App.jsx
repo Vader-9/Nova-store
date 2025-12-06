@@ -23,6 +23,8 @@ function App() {
   // for the nav
   const [nav, setNav] = useState(false);
   
+  // for description
+const [descriptionItem, setDescriptionItem] = useState([]);
 
   // for add to favourites items
   const [favourites, setFavourites] = useState([]);
@@ -61,13 +63,13 @@ function App() {
     <BrowserRouter className='w-full min-h-screen flex flex-col ' >
       <Nav nav={nav} setNav={setNav} likes={likes} setLikes={setLikes} setSearchItem={setSearchItem} cartItems={cartItems} />
       <Routes>
-        <Route path="/" element={<Nova products={products} likes={likes} favourites={favourites} setFavourites={setFavourites} searchItem={searchItem} setSearchItem={setSearchItem} cartItems={cartItems} setCartItems={setCartItems}  />} />
+        <Route path="/" element={<Nova products={products} likes={likes} favourites={favourites} setFavourites={setFavourites} searchItem={searchItem} setSearchItem={setSearchItem} cartItems={cartItems} setCartItems={setCartItems} descriptionItem={descriptionItem} setDescriptionItem={setDescriptionItem} />} />
         <Route path="Electronics" element={<Electronics products={products} likes={likes} favourites={favourites} setFavourites={setFavourites} />} />
         <Route path="Cloths" element={<Cloths />} />
         <Route path="Furniture" element={<Furniture />} />
         <Route path="Shoes" element={<Shoes />} />
         <Route path="Miscellaneous" element={<Miscellaneous />} />
-        <Route path="/description/:id" element={<Description />} />
+        <Route path="/description/:id" element={<Description descriptionItem={descriptionItem} cartItems={cartItems} setCartItems={setCartItems} />} />
         <Route path="Cart" element={<Cart cartItems={cartItems} />} />
       </Routes>
        
