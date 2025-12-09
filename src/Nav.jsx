@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-function Nav({ nav, setNav, likes, setLikes, setSearchItem, cartItems }) {
+function Nav({ likes, setLikes, setSearchItem, cartItems }) {
 
+  // for the nav
+  const [nav, setNav] = useState(false);
 
 
 
@@ -51,7 +53,7 @@ function Nav({ nav, setNav, likes, setLikes, setSearchItem, cartItems }) {
 
               <p className={`absolute -top-2 -right-2 bg-gray-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full ${cartItems.length === 0 ? "hidden" : "block"
                 }`}>
-                {cartItems.length}
+                {cartItems.reduce((acc, current) => acc + current.quantitiy, 0)}
               </p>
             </div>
           </Link>
@@ -100,7 +102,16 @@ function Nav({ nav, setNav, likes, setLikes, setSearchItem, cartItems }) {
                 onClick={handleLikes}
                 className={`cursor-pointer ${likes ? "text-green-500 fill-green-500" : "text-black"}`}
               />
-              <ShoppingCart onClick={goToCart} />
+              <Link to='Cart'>
+                <div className="relative" >
+                  <ShoppingCart />
+
+                  <p className={`absolute -top-2 -right-2 bg-gray-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full ${cartItems.length === 0 ? "hidden" : "block"
+                    }`}>
+                    {cartItems.reduce((acc, current) => acc + current.quantitiy, 0)}
+                  </p>
+                </div>
+              </Link>
               <X onClick={toggleNav} className="cursor-pointer" />
             </div>
           </div>

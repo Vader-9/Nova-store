@@ -49,7 +49,7 @@ function Description({ descriptionItem, cartItems, setCartItems }) {
 
       </div>
 
-      <div className="w-[50%]  p-6 rounded-xl shadow-lg bg-white">
+      <div className="w-[50%]  p-6 bg-white">
         <h1 className="text-3xl font-bold mb-4">{descriptionItem.title}</h1>
 
         <p className="text-lg font-semibold text-gray-700 leading-relaxed mb-4">

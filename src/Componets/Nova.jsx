@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 
-function Nova({ products, likes, favourites, setFavourites, searchItem, setSearchItem, setCartItems, setDescriptionItem }) {
+function Nova({ products, likes, favourites, setFavourites, searchItem, setSearchItem,cartItems, setCartItems, setDescriptionItem }) {
   const [showCart, setShowCart] = useState(null);
   const [error, setError] = useState(false);
 
@@ -21,13 +21,22 @@ function Nova({ products, likes, favourites, setFavourites, searchItem, setSearc
    
 // add to cart
   function addToCart(item){
+
+    const inCart = cartItems.find((cartItem) => cartItem.id === item.id)
   
-      setCartItems((prev)=>[...prev, {
+    if(!inCart){
+        setCartItems((prev)=>[...prev, {
         id: item.id,
         title: item.title,
         price: item.price,
         images: item.images,
+        quantitiy: 1
       }])
+    }else{
+      setCartItems((prev)=> prev.map((cartItem)=>
+        cartItem.id === item.id ? {...cartItem, quantitiy: cartItem.quantitiy + 1} : cartItem
+      ))
+    }
   }
   
   
@@ -42,7 +51,7 @@ function Nova({ products, likes, favourites, setFavourites, searchItem, setSearc
       setError(true);
     }
   }, []);
-  console.log(products);
+ // console.log(products);
   // error state
   if (error || !products) {
     return (
@@ -113,7 +122,7 @@ function Nova({ products, likes, favourites, setFavourites, searchItem, setSearc
 
   return (
     <div className="w-full h-screen text-center mt-8 mb-10 md:h-screen md:mt-2 md:mb-10 md:relative">
-      {searchItem ? <div className="w-full h-20 bg-gray-500 mt-4 p-4 justify-center gap-6 text-center  rounded flex">
+      {searchItem ? <div className="w-full h-20 bg-gray-500 mt-4 p-4 justify-center gap-6 text-center rounded flex sticky">
         <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder='🔍' className="w-120 p-3 border  outline-none rounded-3xl text-white" />
         
         <div className="mt-3">
