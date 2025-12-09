@@ -122,7 +122,7 @@ function Nova({ products, likes, favourites, setFavourites, searchItem, setSearc
 
   return (
     <div className="w-full h-screen text-center mt-8 mb-10 md:h-screen md:mt-2 md:mb-10 md:relative">
-      {searchItem ? <div className="w-full h-20 bg-gray-500 mt-4 p-4 justify-center gap-6 text-center rounded flex sticky">
+      {searchItem ? <div className="w-full h-20 bg-gray-500 mt-4 p-4 justify-center gap-6 text-center rounded flex sticky top-5 z-10 md:static">
         <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder='🔍' className="w-120 p-3 border  outline-none rounded-3xl text-white" />
         
         <div className="mt-3">
@@ -224,7 +224,7 @@ function Nova({ products, likes, favourites, setFavourites, searchItem, setSearc
                           </h1>
                           <p className="text-sm">${favourite.price}</p>
 
-                          {showChart === favourite.id && (
+                          {showCart === favourite.id && (
                             <button className="bg-green-500 text-white w-full mt-2 p-2 rounded-xl">
                               Add to cart
                             </button>
