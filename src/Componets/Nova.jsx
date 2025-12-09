@@ -208,7 +208,7 @@ function Nova({ products, likes, favourites, setFavourites, searchItem, setSearc
                           src={favourite.images?.[0] || ""}
                           alt={favourite.title || "Image"}
                           className="w-full h-full rounded-3xl object-cover cursor-pointer"
-                          onClick={() => toggleChart(favourite.id)}
+                          onClick={() => toggleCart(favourite.id)}
                         />
 
                         <div className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-md z-20">
