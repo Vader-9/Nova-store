@@ -15,6 +15,12 @@ function Cart({ cartItems, setCartItems }) {
         setCartItems((prev)=> prev.map((cartItem)=>
         cartItem.id === id ? {...cartItem, quantitiy: cartItem.quantitiy-1} : cartItem))
     }
+
+    const removeFromCart = (id) => {
+        setCartItems((prev) =>
+          prev.filter((cartItem) => cartItem.id !== id)
+        );
+  }
     
     const totalPrice = cartItems.reduce((acc, item) => acc + item.price * item.quantitiy, 0);
 
@@ -31,7 +37,7 @@ function Cart({ cartItems, setCartItems }) {
                                     <img src={item.images} alt="" className="h-[100px] w-[]" />
                                     <p>{item.title}</p>
                                 </div>
-                                <button><Trash /></button>
+                                <button><Trash onClick={()=> removeFromCart(item.id)} /></button>
                             </div>
                            
                             <div>

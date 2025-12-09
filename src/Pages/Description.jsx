@@ -16,9 +16,10 @@ function Description({ descriptionItem, cartItems, setCartItems }) {
     if(exist){
       setCartItems(prev => prev.filter((items) => items.id !== id))
     }else{
-      setCartItems((prev) =>[...prev, descriptionItem])
+      setCartItems(prev =>[...prev, descriptionItem])
     }
   }
+  
   
 
   return (
