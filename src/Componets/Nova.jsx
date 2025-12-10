@@ -4,42 +4,37 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 
-function Nova({ products, likes, favourites, setFavourites, searchItem, setSearchItem,cartItems, setCartItems, setDescriptionItem }) {
+function Nova({ products, likes, favourites, setFavourites, searchItem, setSearchItem, cartItems, setCartItems, setDescriptionItem }) {
   const [showCart, setShowCart] = useState(null);
   const [error, setError] = useState(false);
 
-   // to go to chart
+  // to go to chart
   const navigate = useNavigate();
 
-  // add to description
-  const goToDescription = (id) => {
-    const item = electro.find((p) => p.id === id)
-    setDescriptionItem(item)
-    navigate("/description/5");
-  }
- 
-   
-// add to cart
-  function addToCart(item){
+  
+
+
+  // add to cart
+  function addToCart(item) {
 
     const inCart = cartItems.find((cartItem) => cartItem.id === item.id)
-  
-    if(!inCart){
-        setCartItems((prev)=>[...prev, {
+
+    if (!inCart) {
+      setCartItems((prev) => [...prev, {
         id: item.id,
         title: item.title,
         price: item.price,
         images: item.images,
         quantitiy: 1
       }])
-    }else{
-      setCartItems((prev)=> prev.map((cartItem)=>
-        cartItem.id === item.id ? {...cartItem, quantitiy: cartItem.quantitiy + 1} : cartItem
+    } else {
+      setCartItems((prev) => prev.map((cartItem) =>
+        cartItem.id === item.id ? { ...cartItem, quantitiy: cartItem.quantitiy + 1 } : cartItem
       ))
     }
   }
-  
-  
+
+
 
 
   // search
@@ -51,7 +46,7 @@ function Nova({ products, likes, favourites, setFavourites, searchItem, setSearc
       setError(true);
     }
   }, []);
- // console.log(products);
+  // console.log(products);
   // error state
   if (error || !products) {
     return (
@@ -81,14 +76,21 @@ function Nova({ products, likes, favourites, setFavourites, searchItem, setSearc
 
   const fitteredSearchItems = products.filter((item) => item.title.toLowerCase().includes(search.toLocaleLowerCase()))
 
-  
+
 
   const electro = searchItem ? fitteredSearchItems : products;
 
+  // add to description
+  const goToDescription = (id) => {
+    const item = electro.find((p) => p.id === id)
+    setDescriptionItem(item)
+    navigate(`/description/${id}`)
+  }
+
   // for the chart toggle
-   const toggleCart = (id) => {
-     setShowCart((prev) => (prev === id ? null : id));
-   }; 
+  const toggleCart = (id) => {
+    setShowCart((prev) => (prev === id ? null : id));
+  };
 
   const addToFavourites = (id) => {
     const item = electro.find((product) => product.id === id);
@@ -123,8 +125,8 @@ function Nova({ products, likes, favourites, setFavourites, searchItem, setSearc
   return (
     <div className="w-full h-screen text-center mt-8 mb-10 md:h-screen md:mt-2 md:mb-10 md:relative">
       {searchItem ? <div className="w-full h-20 bg-gray-500 mt-4 p-4 justify-center gap-6 text-center rounded flex sticky top-5 z-10 md:static">
-        <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder='🔍' className="w-120 p-3 border  outline-none rounded-3xl text-white" />
-        
+        <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder='🔍' className="w-100 p-3 border  outline-none rounded-3xl text-white" />
+
         <div className="mt-3">
           <X onClick={() => setSearchItem(false)} className="cursor-pointer" />
         </div>
@@ -161,7 +163,7 @@ function Nova({ products, likes, favourites, setFavourites, searchItem, setSearc
                       alt={item.title || "Image"}
                       className="w-full h-full rounded-3xl object-cover cursor-pointer"
                       onMouseEnter={() => toggleCart(item.id)}
-                      onClick={()=>goToDescription(item.id)}
+                      onClick={() => goToDescription(item.id)}
                     />
 
                     <div className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-md z-20">
@@ -179,7 +181,7 @@ function Nova({ products, likes, favourites, setFavourites, searchItem, setSearc
                       <p className="text-sm">${item.price}</p>
 
                       {showCart === item.id && (
-                        <button className="bg-green-500 text-white w-full mt-2 p-2 rounded-xl" onClick={()=>addToCart(item)}>
+                        <button className="bg-green-500 text-white w-full mt-2 p-2 rounded-xl" onClick={() => addToCart(item)}>
                           Add to cart
                         </button>
                       )}
@@ -225,7 +227,7 @@ function Nova({ products, likes, favourites, setFavourites, searchItem, setSearc
                           <p className="text-sm">${favourite.price}</p>
 
                           {showCart === favourite.id && (
-                            <button className="bg-green-500 text-white w-full mt-2 p-2 rounded-xl">
+                            <button className="bg-green-500 text-white w-full mt-2 p-2 rounded-xl"  onClick={() => addToCart(favourite)}>
                               Add to cart
                             </button>
                           )}
