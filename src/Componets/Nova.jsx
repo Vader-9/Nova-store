@@ -11,7 +11,7 @@ function Nova({ products, likes, favourites, setFavourites, searchItem, setSearc
   // to go to chart
   const navigate = useNavigate();
 
-  
+
 
 
   // add to cart
@@ -124,15 +124,24 @@ function Nova({ products, likes, favourites, setFavourites, searchItem, setSearc
 
   return (
     <div className="w-full h-screen text-center mt-8 mb-10 md:h-screen md:mt-2 md:mb-10 md:relative">
-      {searchItem ? <div className="w-full h-20 bg-gray-500 mt-4 p-4 justify-center gap-6 text-center rounded flex sticky top-5 z-10 md:static">
-        <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder='🔍' className="w-100 p-3 border  outline-none rounded-3xl text-white" />
+      {searchItem && (
+        <div className="w-full h-20 bg-gray-500 p-4 flex justify-center gap-3 text-center rounded sticky top-[60px] z-50 md:static">
 
-        <div className="mt-3">
-          <X onClick={() => setSearchItem(false)} className="cursor-pointer" />
+          <input
+            type="text"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="🔍"
+            className="w-full max-w-xs p-3 border outline-none rounded-3xl text-white"
+          />
+
+          <X
+            onClick={() => setSearchItem(false)}
+            className="cursor-pointer mt-3"
+          />
         </div>
+      )}
 
-
-      </div> : null}
       {!likes ? (
 
         <div>
@@ -227,7 +236,7 @@ function Nova({ products, likes, favourites, setFavourites, searchItem, setSearc
                           <p className="text-sm">${favourite.price}</p>
 
                           {showCart === favourite.id && (
-                            <button className="bg-green-500 text-white w-full mt-2 p-2 rounded-xl"  onClick={() => addToCart(favourite)}>
+                            <button className="bg-green-500 text-white w-full mt-2 p-2 rounded-xl" onClick={() => addToCart(favourite)}>
                               Add to cart
                             </button>
                           )}
