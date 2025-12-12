@@ -9,10 +9,12 @@ function Nav({ likes, setLikes, setSearchItem, cartItems }) {
 
   function toggleNav() {
     setNav(!nav);
+    setSearchItem(false);
   }
 
   function handleLikes() {
     setLikes(!likes);
+    setNav(!nav)
   }
 
   function mobileNav() {
@@ -41,6 +43,7 @@ function Nav({ likes, setLikes, setSearchItem, cartItems }) {
                 ? "border-b-2 border-green-500 pb-1 text-green-500"
                 : "pb-1"
             }
+            
           >
             Electronics
           </NavLink>
@@ -147,6 +150,7 @@ function Nav({ likes, setLikes, setSearchItem, cartItems }) {
                     ? "border-b-2 border-green-500 pb-1 text-green-500"
                     : "pb-1"
                 }
+                onClick={()=>setNav(!nav)}
               >
                 Electronics
               </NavLink>
@@ -158,6 +162,7 @@ function Nav({ likes, setLikes, setSearchItem, cartItems }) {
                     ? "border-b-2 border-green-500 pb-1 text-green-500"
                     : "pb-1"
                 }
+                onClick={()=>setNav(!nav)}
               >
                 Cloths
               </NavLink>
@@ -169,6 +174,7 @@ function Nav({ likes, setLikes, setSearchItem, cartItems }) {
                     ? "border-b-2 border-green-500 pb-1 text-green-500"
                     : "pb-1"
                 }
+                onClick={()=>setNav(!nav)}
               >
                 Furniture
               </NavLink>
@@ -180,6 +186,7 @@ function Nav({ likes, setLikes, setSearchItem, cartItems }) {
                     ? "border-b-2 border-green-500 pb-1 text-green-500"
                     : "pb-1"
                 }
+                onClick={()=>setNav(!nav)}
               >
                 Shoes
               </NavLink>
@@ -191,6 +198,7 @@ function Nav({ likes, setLikes, setSearchItem, cartItems }) {
                     ? "border-b-2 border-green-500 pb-1 text-green-500"
                     : "pb-1"
                 }
+                onClick={()=>setNav(!nav)}
               >
                 Miscellaneous
               </NavLink>
