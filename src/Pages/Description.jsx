@@ -30,7 +30,7 @@ function Description({ descriptionItem, cartItems, setCartItems }) {
     <img
       src={descriptionItem.images[0]}
       alt=""
-      className="w-full h-[300px] md:h-[650px] object-cover rounded-xl mb-4"
+      className="w-full h-[310px] md:h-[650px] object-cover rounded-xl mb-4"
     />
 
     <div className="flex gap-4">
