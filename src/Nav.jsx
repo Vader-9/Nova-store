@@ -12,9 +12,14 @@ function Nav({ likes, setLikes, setSearchItem, cartItems }) {
     setSearchItem(false);
   }
 
-  function handleLikes() {
+  function handleLikesMobile() {
     setLikes(!likes);
     setNav(!nav)
+  }
+
+  function handleLikes() {
+    setLikes(!likes);
+    
   }
 
   function mobileNav() {
@@ -208,7 +213,7 @@ function Nav({ likes, setLikes, setSearchItem, cartItems }) {
               <Search onClick={mobileNav} />
 
               <Heart
-                onClick={handleLikes}
+                onClick={handleLikesMobile}
                 className={`cursor-pointer ${likes ? "text-green-500 fill-green-500" : "text-black"}`}
               />
 

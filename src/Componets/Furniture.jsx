@@ -13,7 +13,7 @@ function Furniture({ products, likes, favourites, setFavourites, searchItem, set
 
   // for furniture category
   const furnitureItems = (products || []).filter(
-    (item) => item?.category && item?.category?.name === "Electronics"
+    (item) => item?.category && item?.category?.name === "Furniture"
   );
 
 console.log(furnitureItems);
@@ -208,7 +208,7 @@ console.log(furnitureItems);
       ) : (
         <div>
           <div className="m-2">
-            <h1>Favourites</h1>
+            
 
             <div className="flex justify-center w-full">
               <div className="grid gap-2 grid-cols-1 mb-10 w-full p-5 sm:grid-cols-2 md:grid-cols-4">
