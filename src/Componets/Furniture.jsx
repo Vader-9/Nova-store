@@ -16,7 +16,7 @@ function Furniture({ products, likes, favourites, setFavourites, searchItem, set
     (item) => item?.category && item?.category?.name === "Furniture"
   );
 
-//console.log(furnitureItems);
+console.log(furnitureItems);
 
   // add to cart
   function addToCart(item) {

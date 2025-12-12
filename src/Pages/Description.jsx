@@ -10,7 +10,7 @@ function Description({ descriptionItem, cartItems, setCartItems }) {
 
   const exist = cartItems.find((items) => items.id === descriptionItem.id);
 
-  const toggoleCart = (id) => {
+ /* const toggoleCart = (id) => {
     
 
     if(exist){
@@ -18,7 +18,29 @@ function Description({ descriptionItem, cartItems, setCartItems }) {
     }else{
       setCartItems(prev =>[...prev, descriptionItem])
     }
+  } */
+
+  const toggleCart = (id) => {
+  const exist = cartItems.some((item) => item.id === id);
+
+  if (exist) {
+    // REMOVE from cart
+    setCartItems((prev) => prev.filter((item) => item.id !== id));
+  } else {
+    // ADD TO CART but in proper structure
+    setCartItems((prev) => [
+      ...prev,
+      {
+        id: descriptionItem.id,
+        title: descriptionItem.title,
+        price: descriptionItem.price, // make sure price is a number
+        images: descriptionItem.images,
+        quantity: 1,
+      },
+    ]);
   }
+};
+
   
   
 
@@ -61,7 +83,7 @@ function Description({ descriptionItem, cartItems, setCartItems }) {
 
     <button
       className="bg-green-600 text-white w-full md:w-[40%] py-3 rounded-xl font-bold hover:bg-green-700 hover:scale-105 transition"
-      onClick={() => toggoleCart(descriptionItem.id)}
+      onClick={() => toggleCart(descriptionItem.id)}
     >
       {exist ? "Remove from Cart" : "Add to Cart"}
     </button>
