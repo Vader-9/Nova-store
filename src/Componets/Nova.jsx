@@ -46,7 +46,7 @@ function Nova({ products, likes, favourites, setFavourites, searchItem, setSearc
       setError(true);
     }
   }, []);
-  // console.log(products);
+   console.log(products);
   // error state
   if (error || !products) {
     return (

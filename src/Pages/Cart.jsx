@@ -57,7 +57,7 @@ function Cart({ cartItems, setCartItems }) {
 
                             {/* Right Section: Price and Quantity */}
                             <div className="flex flex-col items-center md:items-end mt-2 md:mt-0">
-                                <p className="my-2">$ {priceitems + deliveryFee}</p>
+                                <p className="my-2">$ {priceitems }</p>
                                 <div className="flex gap-2 items-center">
                                     <button
                                         onClick={() => incrementQuantitiy(item.id)}
@@ -86,7 +86,7 @@ function Cart({ cartItems, setCartItems }) {
                 <h1 className="text-lg font-semibold">Summary</h1>
                 <p>Items total: {cartItems.length}</p>
                 <p>Delivery fee: $10</p>
-                <p className="font-bold">Total: ${totalPrice}</p>
+                <p className="font-bold">Total: ${totalPrice + deliveryFee}</p>
                 <button className="bg-green-500 text-white w-full p-2 rounded-xl mt-2 hover:bg-green-600 transition">
                     Proceed to checkout
                 </button>
