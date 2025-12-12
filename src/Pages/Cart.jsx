@@ -32,7 +32,7 @@ function Cart({ cartItems, setCartItems }) {
     return (
         <div className="w-full min-h-screen px-5 pt-5 bg-gray-200 flex flex-col md:flex-row gap-5">
             <div className="w-[100%] flex flex-col   ">
-                <h1 className="p-5 shadow-lg bg-white boreder-b w-[100%] rounded md:w-[95%]">cart({cartItems.length})</h1>
+                <h1 className="p-5 mt-7 shadow-lg bg-white boreder-b w-[100%] rounded md:w-[95%]">cart({cartItems.length})</h1>
                 {
                     cartItems.map((item) => (
                         <div

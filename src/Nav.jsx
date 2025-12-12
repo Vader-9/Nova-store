@@ -139,7 +139,7 @@ function Nav({ likes, setLikes, setSearchItem, cartItems }) {
           >
             <div className="w-full flex flex-col gap-5 p-6">
 
-              <h1 className="font-bold text-2xl text-green-500">
+              <h1 className="font-bold text-2xl text-green-500" onClick={()=>setNav(!nav)}>
                 <NavLink to="/" className="pb-1">Nova</NavLink>
               </h1>
 
@@ -214,7 +214,7 @@ function Nav({ likes, setLikes, setSearchItem, cartItems }) {
 
               <NavLink to='Cart'>
                 <div className="relative">
-                  <ShoppingCart />
+                  <ShoppingCart onClick={()=>setNav(!nav)} />
                   <p
                     className={`absolute -top-2 -right-2 bg-gray-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full ${
                       cartItems.length === 0 ? "hidden" : "block"

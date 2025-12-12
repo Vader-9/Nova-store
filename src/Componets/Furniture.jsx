@@ -13,7 +13,7 @@ function Furniture({ products, likes, favourites, setFavourites, searchItem, set
 
   // for furniture category
   const furnitureItems = (products || []).filter(
-    (item) => item?.category && item?.category?.name === "Furniture"
+    (item) => item?.category && item?.category?.name === "Electronics"
   );
 
 console.log(furnitureItems);

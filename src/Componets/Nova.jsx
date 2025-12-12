@@ -146,7 +146,7 @@ function Nova({ products, likes, favourites, setFavourites, searchItem, setSearc
 
         <div>
 
-          <div className="w-full h-[80px] p-4 my-4 flex justify-center items-center gap-2">
+          <div className="w-full h-[80px] p-4 my-4  flex justify-center items-center gap-2">
             <h1>Nova products</h1>
             <p>({electro.length})</p>
           </div>
@@ -204,7 +204,7 @@ function Nova({ products, likes, favourites, setFavourites, searchItem, setSearc
       ) : (
         <div>
           <div className="m-2">
-            <h1>Favourites</h1>
+            
 
             <div className="flex justify-center w-full">
               <div className="grid gap-2 grid-cols-1 mb-10 w-full p-5 sm:grid-cols-2 md:grid-cols-4">
