@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { Plus, Minus } from "lucide-react";
+
 
 function Description({ descriptionItem, cartItems, setCartItems }) {
   const { id } = useParams();
