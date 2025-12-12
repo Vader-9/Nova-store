@@ -24,7 +24,7 @@ function Description({ descriptionItem, cartItems, setCartItems }) {
 
   return (
 
-    <div className="w-full min-h-screen p-4 flex flex-col md:flex-row">
+    <div className="w-full min-h-screen p-4 m-5 flex flex-col md:flex-row">
 
   <div className="w-full md:w-1/2 p-1">
     <img
