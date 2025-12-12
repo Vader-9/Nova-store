@@ -12,7 +12,7 @@ function Furniture({ products, likes, favourites, setFavourites, searchItem, set
   const navigate = useNavigate();
 
   // for furniture category
-  const furnitureItems = products || [].filter(
+  const furnitureItems = (products || []).filter(
     (item) => item?.category && item?.category?.name === "Furniture"
   );
 

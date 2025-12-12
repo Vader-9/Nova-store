@@ -14,7 +14,7 @@ function Miscellaneous({ products, likes, favourites, setFavourites, searchItem,
 
    // for electronics category
 
-  const miscellaneousItems = products || [].filter(
+  const miscellaneousItems = (products || []).filter(
     (item) => item?.category && item?.category?.name === "Electronics"
   );
 

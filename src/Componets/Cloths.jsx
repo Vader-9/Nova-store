@@ -14,7 +14,7 @@ function Cloths({ products, likes, favourites, setFavourites, searchItem, setSea
 
    // for electronics category
 
-  const clothsItems = products || [].filter(
+  const clothsItems = (products || []).filter(
     (item) => item?.category && item?.category?.name === "Electronics"
   );
 
