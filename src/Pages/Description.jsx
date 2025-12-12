@@ -24,13 +24,13 @@ function Description({ descriptionItem, cartItems, setCartItems }) {
 
   return (
 
-    <div className="w-full min-h-screen p-4 m-5 flex flex-col md:flex-row">
+    <div className="w-full min-h-screen p-4 mt-8 flex flex-col md:flex-row">
 
   <div className="w-full md:w-1/2 p-1">
     <img
       src={descriptionItem.images[0]}
       alt=""
-      className="w-full h-[350px] md:h-[650px] object-cover rounded-xl mb-4"
+      className="w-full h-[300px] md:h-[650px] object-cover rounded-xl mb-4"
     />
 
     <div className="flex gap-4">
