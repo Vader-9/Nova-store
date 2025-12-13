@@ -51,11 +51,13 @@ function Description({ descriptionItem, cartItems, setCartItems }) {
         cartItem.id === id
           ? {
               ...cartItem,
-              quantitiy: cartItem.quantitiy > 1 ? cartItem.quantitiy - 1 : 1,
+              quantitiy: cartItem.quantitiy > 0 ? cartItem.quantitiy - 1 : 1,
             }
           : cartItem
       )
     );
+
+    
   };
 
   // Price calculation

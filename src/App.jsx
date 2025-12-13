@@ -8,7 +8,7 @@ import Cloths from "./Componets/Cloths";
 import Furniture from "./Componets/Furniture";
 import Shoes from "./Componets/Shoes";
 import Miscellaneous from "./Componets/Miscellaneous";
-import Description from "./Pages/description";
+import Description from "./Pages/Description";
 import Cart from "./Pages/Cart";
 //import Footer from "./Footer";
 import { useEffect, useState } from "react";
