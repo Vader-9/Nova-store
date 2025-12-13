@@ -50,7 +50,7 @@ console.log(electronicsItems);
       setError(true);
     }
   }, []);
-  // console.log(products);
+   console.log(products);
   // error state
   if (error || !electronicsItems) {
     return (
@@ -158,7 +158,7 @@ if (electronicsItems.length === 0) {
         <div>
 
           <div className="w-full h-[80px] p-4 my-4 flex justify-center items-center gap-2">
-            <h1>Furniture</h1>
+            <h1>Electronics</h1>
             <p>({electro.length})</p>
           </div>
 

@@ -11,12 +11,12 @@ function Shoes({ products, likes, favourites, setFavourites, searchItem, setSear
   // to go to chart
   const navigate = useNavigate();
 
-
-   // for electronics category
-
+  // for furniture category
   const shoesItems = (products || []).filter(
-    (item) => item?.category && item?.category?.name === "Electronics"
+    (item) => item?.category && item?.category?.name === "Shoes"
   );
+
+console.log(shoesItems);
 
   // add to cart
   function addToCart(item) {
@@ -50,7 +50,7 @@ function Shoes({ products, likes, favourites, setFavourites, searchItem, setSear
       setError(true);
     }
   }, []);
-  
+   //console.log(products);
   // error state
   if (error || !shoesItems) {
     return (
@@ -65,7 +65,7 @@ function Shoes({ products, likes, favourites, setFavourites, searchItem, setSear
   }
 
   // Loading State
-  if (shoesItems.length === 0) {
+  if (!products || products.length === 0) {
     return (
       <div className="flex flex-col justify-center items-center h-screen gap-4">
         <Settings className="animate-spin text-4xl text-green-500" size={100} />
@@ -74,7 +74,14 @@ function Shoes({ products, likes, favourites, setFavourites, searchItem, setSear
     );
   }
 
-
+  // if no electronics products is found
+if (shoesItems.length === 0) {
+  return (
+    <div className="flex flex-col justify-center items-center h-screen gap-4">
+      <p className="text-lg font-semibold">No Electronics Products Found</p>
+    </div>
+  );
+}
 
   // this is were the search will be place
 
@@ -127,7 +134,7 @@ function Shoes({ products, likes, favourites, setFavourites, searchItem, setSear
 
 
   return (
-    <div className="w-full h-screen text-center mt-8 mb-10 md:h-screen md:mt-2 md:mb-10 md:relative">
+    <div className="w-full h-screen text-center  mt-8 mb-10 md:h-screen md:mt-2 md:mb-10 md:relative">
       {searchItem && (
         <div className="w-full h-20 bg-gray-500 p-4 flex justify-center gap-3 text-center rounded sticky top-[60px] z-50 md:static">
 
@@ -151,7 +158,7 @@ function Shoes({ products, likes, favourites, setFavourites, searchItem, setSear
         <div>
 
           <div className="w-full h-[80px] p-4 my-4 flex justify-center items-center gap-2">
-            <h1>Nova products</h1>
+            <h1>Shoes</h1>
             <p>({electro.length})</p>
           </div>
 

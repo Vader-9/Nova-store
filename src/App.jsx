@@ -70,11 +70,11 @@ const [descriptionItem, setDescriptionItem] = useState([]);
       <Nav  likes={likes} setLikes={setLikes} setSearchItem={setSearchItem} cartItems={cartItems} />
       <Routes>
         <Route path="/" element={<Nova products={products} likes={likes} favourites={favourites} setFavourites={setFavourites} searchItem={searchItem} setSearchItem={setSearchItem} cartItems={cartItems} setCartItems={setCartItems} descriptionItem={descriptionItem} setDescriptionItem={setDescriptionItem} />} />
-        <Route path="Electronics" element={<Electronics  />} />
-        <Route path="Cloths" element={<Cloths />} />
+        <Route path="Electronics" element={<Electronics products={products} likes={likes} favourites={favourites} setFavourites={setFavourites} searchItem={searchItem} setSearchItem={setSearchItem} cartItems={cartItems} setCartItems={setCartItems} descriptionItem={descriptionItem} setDescriptionItem={setDescriptionItem} />} />
+        <Route path="Cloths" element={<Cloths  products={products} likes={likes} favourites={favourites} setFavourites={setFavourites} searchItem={searchItem} setSearchItem={setSearchItem} cartItems={cartItems} setCartItems={setCartItems} descriptionItem={descriptionItem} setDescriptionItem={setDescriptionItem}  />} />
         <Route path="Furniture" element={<Furniture products={products} likes={likes} favourites={favourites} setFavourites={setFavourites} searchItem={searchItem} setSearchItem={setSearchItem} cartItems={cartItems} setCartItems={setCartItems} descriptionItem={descriptionItem} setDescriptionItem={setDescriptionItem}  />} />
-        <Route path="Shoes" element={<Shoes />} />
-        <Route path="Miscellaneous" element={<Miscellaneous />} />
+        <Route path="Shoes" element={<Shoes products={products} likes={likes} favourites={favourites} setFavourites={setFavourites} searchItem={searchItem} setSearchItem={setSearchItem} cartItems={cartItems} setCartItems={setCartItems} descriptionItem={descriptionItem} setDescriptionItem={setDescriptionItem}  />} />
+        <Route path="Miscellaneous" element={<Miscellaneous products={products} likes={likes} favourites={favourites} setFavourites={setFavourites} searchItem={searchItem} setSearchItem={setSearchItem} cartItems={cartItems} setCartItems={setCartItems} descriptionItem={descriptionItem} setDescriptionItem={setDescriptionItem}  />} />
         <Route path="/description/:id" element={<Description descriptionItem={descriptionItem} cartItems={cartItems} setCartItems={setCartItems} />} />
         <Route path="Cart" element={<Cart cartItems={cartItems} setCartItems={setCartItems} />} />
       </Routes>

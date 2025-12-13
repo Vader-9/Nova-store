@@ -15,7 +15,7 @@ function Miscellaneous({ products, likes, favourites, setFavourites, searchItem,
    // for electronics category
 
   const miscellaneousItems = (products || []).filter(
-    (item) => item?.category && item?.category?.name === "Electronics"
+    (item) => item?.category && item?.category?.name === "Miscellaneous"
   );
 
   // add to cart
@@ -151,7 +151,7 @@ function Miscellaneous({ products, likes, favourites, setFavourites, searchItem,
         <div>
 
           <div className="w-full h-[80px] p-4 my-4 flex justify-center items-center gap-2">
-            <h1>Nova products</h1>
+            <h1>Miscellaneous products</h1>
             <p>({electro.length})</p>
           </div>
 
