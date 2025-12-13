@@ -151,8 +151,8 @@ function Miscellaneous({ products, likes, favourites, setFavourites, searchItem,
         <div>
 
           <div className="w-full h-[80px] p-4 my-4 flex justify-center items-center gap-2">
-            <h1>Miscellaneous products</h1>
-            <p>({electro.length})</p>
+            <h1 class="text-4xl md:text-6xl font-extrabold bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 text-transparent bg-clip-text drop-shadow-lg">products</h1>
+            
           </div>
 
           <div className="flex justify-center w-full">
