@@ -34,6 +34,9 @@ const [descriptionItem, setDescriptionItem] = useState([]);
   // for cart
   const [cartItems, setCartItems] = useState([]);
 
+  // for error
+ // const [error, setError] = useState(false)
+
 
 
   // nav
@@ -47,7 +50,9 @@ const [descriptionItem, setDescriptionItem] = useState([]);
         setProducts(responce.data)
 
       } catch (error) {
+
         console.error(error)
+        
       }
     }
     fetchData()
@@ -56,6 +61,8 @@ const [descriptionItem, setDescriptionItem] = useState([]);
   //console.log(products[1]?.category?.name)
 
   //w-full min-h-screen overflow-hidden md:min-h-screen
+
+
 
 
   return (

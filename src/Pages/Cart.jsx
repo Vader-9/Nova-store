@@ -24,10 +24,14 @@ function Cart({ cartItems, setCartItems }) {
 
     const totalPrice = cartItems.reduce((acc, item) => acc + item.price * item.quantitiy, 0);
 
-    const priceitems = cartItems.reduce((acc, item) => acc + item.price * item.quantitiy, 0);
+   
     const deliveryFee = 10;
-    //const totalAmount = priceitems + deliveryFee;
+    
 
+    function priceitems(item){
+         return item.price * item.quantitiy
+         
+    }
 
     return (
         <div className="w-full min-h-screen px-5 pt-5 bg-gray-200 flex flex-col md:flex-row gap-5">
@@ -57,7 +61,7 @@ function Cart({ cartItems, setCartItems }) {
 
                             {/* Right Section: Price and Quantity */}
                             <div className="flex flex-col items-center md:items-end mt-2 md:mt-0">
-                                <p className="my-2">$ {priceitems + deliveryFee}</p>
+                                <p className="my-2">$ {priceitems(item)}</p>
                                 <div className="flex gap-2 items-center">
                                     <button
                                         onClick={() => incrementQuantitiy(item.id)}
@@ -86,7 +90,7 @@ function Cart({ cartItems, setCartItems }) {
                 <h1 className="text-lg font-semibold">Summary</h1>
                 <p>Items total: {cartItems.length}</p>
                 <p>Delivery fee: $10</p>
-                <p className="font-bold">Total: ${totalPrice}</p>
+                <p className="font-bold">Total: ${totalPrice + deliveryFee}</p>
                 <button className="bg-green-500 text-white w-full p-2 rounded-xl mt-2 hover:bg-green-600 transition">
                     Proceed to checkout
                 </button>

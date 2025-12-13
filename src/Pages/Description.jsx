@@ -23,28 +23,22 @@ function Description({ descriptionItem, cartItems, setCartItems }) {
 
   
 function addToCart(descriptionItem) {
-  const exist = cartItems.find((cartItem) => cartItem.id === descriptionItem.id);
+ const inCart = cartItems.find((cartItem) => cartItem.id === descriptionItem.id)
+ console.log(inCart)
 
-  if (exist) {
-    setCartItems((prev) =>
-      prev.map((cartItem) =>
-        cartItem.id === descriptionItem.id
-          ? { ...cartItem, quantity: cartItem.quantity + 1 }
-          : cartItem
-      )
-    );
-  } else {
-    setCartItems((prev) => [
-      ...prev,
-      {
+    if (!inCart) {
+      setCartItems((prev) => [...prev, {
         id: descriptionItem.id,
         title: descriptionItem.title,
         price: descriptionItem.price,
         images: descriptionItem.images,
-        quantity: 1
-      }
-    ]);
-  }
+        quantitiy: 1
+      }])
+    } else {
+      setCartItems((prev) => prev.map((cartItem) =>
+        cartItem.id === descriptionItem.id ? { ...cartItem, quantitiy: cartItem.quantitiy + 1 } : cartItem
+      ))
+    }
 }
 
 console.log(cartItems)
