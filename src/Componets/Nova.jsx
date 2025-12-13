@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 
+
+
 function Nova({ products, likes, favourites, setFavourites, searchItem, setSearchItem, cartItems, setCartItems, setDescriptionItem }) {
   const [showCart, setShowCart] = useState(null);
   const [error, setError] = useState(false);
@@ -27,6 +29,7 @@ function Nova({ products, likes, favourites, setFavourites, searchItem, setSearc
         images: item.images,
         quantitiy: 1
       }])
+      toast.success("Quantity increased 🛒");
     } else {
       setCartItems((prev) => prev.map((cartItem) =>
         cartItem.id === item.id ? { ...cartItem, quantitiy: cartItem.quantitiy + 1 } : cartItem
