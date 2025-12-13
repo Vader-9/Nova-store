@@ -12,6 +12,7 @@ import Description from "./Pages/description";
 import Cart from "./Pages/Cart";
 //import Footer from "./Footer";
 import { useEffect, useState } from "react";
+//import { getItem } from "./utiles/Localstorage";
 
 //import { ConstructionIcon } from "lucide-react";
 
@@ -26,17 +27,38 @@ function App() {
 const [descriptionItem, setDescriptionItem] = useState([]);
 
   // for add to favourites items
-  const [favourites, setFavourites] = useState([]);
+ const [favourites, setFavourites] = useState(() => {
+  const storedFavourites = localStorage.getItem("favourites");
+  return storedFavourites ? JSON.parse(storedFavourites) : [];
+});
+
 
   // for search items
   const [searchItem, setSearchItem] = useState(false)
 
   // for cart
-  const [cartItems, setCartItems] = useState([]);
+ const [cartItems, setCartItems] = useState(() => {
+  try {
+    const storedCart = localStorage.getItem("cartItems");
+    return storedCart ? JSON.parse(storedCart) : [];
+  } catch {
+    return [];
+  }
+});
+
+useEffect(() => {
+  localStorage.setItem("cartItems", JSON.stringify(cartItems));
+}, [cartItems]);
+
+
 
   // for error
  // const [error, setError] = useState(false)
 
+
+ useEffect(() => {
+  localStorage.setItem("favourites", JSON.stringify(favourites));
+}, [favourites]);
 
 
   // nav
