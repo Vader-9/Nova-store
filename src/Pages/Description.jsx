@@ -50,14 +50,14 @@ function Description({ descriptionItem, cartItems, setCartItems }) {
       prev.map(cartItem =>
         cartItem.id === id
           ? {
-              ...cartItem,
-              quantitiy: cartItem.quantitiy > 0 ? cartItem.quantitiy - 1 : 1,
-            }
+            ...cartItem,
+            quantitiy: cartItem.quantitiy > 0 ? cartItem.quantitiy - 1 : 1,
+          }
           : cartItem
       )
     );
 
-    
+
   };
 
   // Price calculation
@@ -102,7 +102,7 @@ function Description({ descriptionItem, cartItems, setCartItems }) {
           ₦{descriptionItem.price}
         </h2>
 
-        {inCart ? (
+        {inCart && inCart.quantitiy > 0 ? (
           <div className="flex flex-col items-center md:items-end mt-2 md:mt-0">
             <p className="my-2">$ {priceitems(inCart)}</p>
             <div className="flex gap-2 items-center">
@@ -131,6 +131,7 @@ function Description({ descriptionItem, cartItems, setCartItems }) {
             Add to cart
           </button>
         )}
+
       </div>
     </div>
   );

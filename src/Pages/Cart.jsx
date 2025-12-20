@@ -1,6 +1,4 @@
 import { Plus, Minus, Trash } from "lucide-react";
-import { useState } from "react";
-
 
 function Cart({ cartItems, setCartItems }) {
 
@@ -13,7 +11,7 @@ function Cart({ cartItems, setCartItems }) {
 
     const decrementQuantitiy = (id) => {
         setCartItems((prev) => prev.map((cartItem) =>
-            cartItem.id === id ? { ...cartItem, quantitiy: cartItem.quantitiy - 1 } : cartItem))
+            cartItem.id === id  && cartItem.quantitiy !== 1? { ...cartItem, quantitiy: cartItem.quantitiy - 1 } : cartItem))
     }
 
     const removeFromCart = (id) => {
